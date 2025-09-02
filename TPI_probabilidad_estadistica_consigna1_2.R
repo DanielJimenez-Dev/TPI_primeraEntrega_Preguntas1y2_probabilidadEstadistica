@@ -59,9 +59,9 @@ max_x <- max(x)
 
 # Construimos los puntos de breaks de las clases
 
-breaks <- c(min_x, min_x + A * (1:(k -1)), max_x)
+A_red <- ceiling(A)
 
-breaks_rep <- round(breaks, 4)
+breaks <- seq(from = min_x, to = max_x + A_red, by = A_red)
 
 # Clasificamos los datos en los intervalos y armamos la taba de frecuencia
 # usamos intervalos cerrados a la derecha: (a, b)
@@ -153,3 +153,4 @@ tabla_sat <- data.frame(
 
 # Mostrar tabla
 print(tabla_sat, row.names = FALSE)
+
