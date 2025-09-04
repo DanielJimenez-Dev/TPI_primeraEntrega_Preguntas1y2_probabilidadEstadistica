@@ -61,7 +61,14 @@ max_x <- max(x)
 
 A_red <- ceiling(A)
 
-breaks <- seq(from = min_x, to = max_x + A_red, by = A_red)
+# El valor minimo de los datos
+limite_inferior <- floor(min(x))
+
+# El valor maximo de los datos
+limite_superior <- ceiling(max(x))
+
+#Construir la secuencia de forma segura para que no se pierdan valores
+breaks <- seq(from = limite_inferior, to = limite_superior + A_red, by = A_red)
 
 # Clasificamos los datos en los intervalos y armamos la taba de frecuencia
 # usamos intervalos cerrados a la derecha: (a, b)
@@ -71,7 +78,7 @@ clases <- cut(
   x,
   breaks = breaks,
   include_lowest = TRUE,
-  right = TRUE,
+  right = FALSE,
   dig.lab = 10
 )
 
@@ -153,4 +160,5 @@ tabla_sat <- data.frame(
 
 # Mostrar tabla
 print(tabla_sat, row.names = FALSE)
+
 
